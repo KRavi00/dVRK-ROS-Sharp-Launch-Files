@@ -1,0 +1,17 @@
+<!--
+Launch file to publish dVRK robot description to Unity via ROS#
+-->
+
+<launch>
+
+	<include file="$(find file_server)/launch/ros_sharp_communication.launch">
+		<arg name="port" value="9090" />
+	</include>
+
+
+	<arg name="urdf_file" default="$(find xacro)/xacro.py '$(find dvrk_model)/model/PSM2.urdf.xacro'" />
+
+	<param name="robot/name" value="dvrk_psm" />
+	<param name="robot_description" command="$(arg urdf_file)" />
+
+</launch>
